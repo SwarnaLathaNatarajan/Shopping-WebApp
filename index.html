@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
+</head>
+<script>
+var image_slide = new Array("images/b3.png", "images/b8.jpg","images/b4.jpg","images/b10.jpg","images/b11.png","images/b12.jpg");
+   var image_length = image_slide.length-1;
+   var image_current = -1;
+
+   function slide () {
+    if (image_current == image_length){
+     image_current = 0;
+    } else {
+     image_current++;
+    }
+    document.slideshow.src = image_slide[image_current];
+   }
+
+   function auto () {
+    setInterval(slide, 5000);
+   }
+
+
+   window.onload = function(){
+    slide(); // To show the 1st image
+    auto(); // Initialize the slider
+   }
+var request;  
+function sendInfo(type,cat)  
+{  
+	
+var url="menu?type="+type+"&cat="+cat;  
+  
+if(window.XMLHttpRequest){  
+request=new XMLHttpRequest();  
+}    
+request.onreadystatechange=getInfo;  
+request.open("GET",url,true);  
+request.send();    
+}  
+  
+function getInfo(){  
+if(request.readyState==4){  
+var val=request.responseText;  
+document.getElementById('l').innerHTML=val;  
+}  
+}  
+function veg() {
+ var x = document.getElementById("veg_list").innerHTML;
+    document.getElementById("list").innerHTML = x;
+}
+function nv() {
+ var x = document.getElementById("nv_list").innerHTML;
+    document.getElementById("list").innerHTML = x;
+}
+function addtocart(name,rs,qty)
+{
+var url="mycart?name="+name+"&rs="+rs+"&qty="+qty;  
+ if(window.XMLHttpRequest){  
+request=new XMLHttpRequest();  
+}    
+request.onreadystatechange=total;  
+request.open("GET",url,true);  
+request.send();  
+}
+function total(){  
+if(request.readyState==4){  
+var val=request.responseText;  
+document.getElementById('r2').innerHTML=val;  
+}  
+}  
+
+
+</script>
+<style type="text/css">
+header {
+    color:white;
+    background-color:#095c91 ;
+    text-align: center;
+    clear: left;
+    height:60px;
+    font-size: 25px;
+    font-family: cursive;
+      padding: 0.5cm 0.5cm;
+   
+}
+	#l{
+		float:left;
+		border:5px solid #095c91;
+		
+		height:wrap-content;
+		width:1100px;
+		padding-bottom: 0.5cm;
+		padding-top: 0.5cm;
+		padding-left: 0.5cm;
+		padding-right: 0.5cm;
+		font-size: 25px;
+		background-color: white;
+	}
+	#slider
+	{
+		height: 570px;
+		width:1100px;
+		
+	}
+	#slider img {
+    width: 100%;
+    height: 100%;
+}
+	#r1{
+		float:right;
+		height:345px;
+		width:400px;
+		background-color: #095c91;
+		color:white;
+	}
+	#r2{
+		float:right;
+		min-height:335px;
+		height: wrap-content;
+		width:400px;
+		background-color: #e31837;
+		color:white;
+		font-size:20px;
+	}
+	h3{ float:left; font-family: Alegreya; }
+	h4{ float:right; font-family: Alegreya;}
+	#veg_list{
+		display:none
+	}
+	#nv_list{
+		display:none
+	}
+	#Category{
+		margin-left: 10px;
+	}
+	#b1{
+			margin-left: -40px;	
+	}
+	#b2{
+		 margin-left:80px;
+	}
+	#list{
+		margin-left: 150px;
+		list-style-type: none;
+	}
+	a{
+		color:white;
+		font-size: 23px;
+	}
+	body{
+		font-family: Alegreya;
+	}
+</style>
+<header>
+<h3><center>~PIZZERIA~</center></h3>
+<h4>
+<b >Welcome Guest!</b>
+</h4>
+</header>
+<body bgcolor="#F0F8FF">
+<table>
+	<tr>
+	<td rowspan="2">
+	<div id="l">
+	<div id="slider" >
+	<img name="slideshow" />
+	 </div>
+	</div>
+	</td>
+	<td><div id="r1">
+	<link rel="stylesheet" type="text/css" href="ss.css">
+	<center><h2><b id="Category">Select Category</h2>
+<button type="button" id="b1" onclick="veg()" style="background-image:url('images/veg.jpg')" />
+<button type="button" id="b2" onclick="nv()" style="background-image:url('images/nv.jpg')" />
+</link>
+</center>
+<p id="list"><h2></h2></p>
+<ul id="veg_list" class="unstyled">
+<li><a href="javascript:;" onclick="sendInfo('starter','veg')" >Starters</a></li>
+<li><a href="javascript:;" onclick="sendInfo('pizza','veg')" >Pizza</a></li>
+<li><a href="javascript:;" onclick="sendInfo('burger','veg')" >Burger</a></li>
+<li><a href="javascript:;" onclick="sendInfo('pasta','veg')" >Pasta</a></li>
+<li><a href="javascript:;" onclick="sendInfo('dessert','veg')" >Dessert</a></li>
+</ul>
+<ul id="nv_list" class="unstyled">
+<li><a href="javascript:;" onclick="sendInfo('starter','non-veg')" >Starters</a></li>
+<li><a href="javascript:;" onclick="sendInfo('pizza','non-veg')" >Pizza</a></li>
+<li><a href="javascript:;" onclick="sendInfo('burger','non-veg')" >Burger</a></li>
+<li><a href="javascript:;" onclick="sendInfo('pasta','non-veg')" >Pasta</a></li>
+<li><a href="javascript:;" onclick="sendInfo('chicken','non-veg')">Chicken</a></li>
+</ul></b>
+	</div>
+	</td></tr>
+	<tr>
+	<td><div id="r2"><center><h2><b>Cart</b></h2></center></div>
+	</td></tr>
+</table>
+</body>
+</html>

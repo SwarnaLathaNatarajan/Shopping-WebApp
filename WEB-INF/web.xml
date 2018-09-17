@@ -1,0 +1,42 @@
+<web-app>
+	<servlet>
+		<servlet-name>Menu</servlet-name>
+		<servlet-class>menuController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Menu</servlet-name>
+		<url-pattern>/menu</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Cart</servlet-name>
+		<servlet-class>cartController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Cart</servlet-name>
+		<url-pattern>/mycart</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>after-signin</servlet-name>
+		<servlet-class>signinController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>after-signin</servlet-name>
+		<url-pattern>/mysignin</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>after-signup</servlet-name>
+		<servlet-class>signupController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>after-signup</servlet-name>
+		<url-pattern>/mysignup</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>get cookie</servlet-name>
+		<servlet-class>cartDisplay</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>get cookie</servlet-name>
+		<url-pattern>/display</url-pattern>
+	</servlet-mapping>
+</web-app>
